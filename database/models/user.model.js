@@ -19,7 +19,6 @@ emil:{
 },
 password:{
 type:String,
-require:true,
 match:'/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/',
 },
 birthDate:{
@@ -62,7 +61,7 @@ userSchema.statics.login=async(emil, password)=>{
 }
 userSchema.methods.generateToken = async function(){
 const user =this
-const token =JWT.sign({_id:user._id},process.env.JWYKEY)
+const token =JWT.sign({_id:user._id},process.env.JWTKEY)
 user.token=user.token.concat({token})
 await user.save()
 return token

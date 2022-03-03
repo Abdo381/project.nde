@@ -4,6 +4,8 @@ require("dotenv").config()
 require("../../database/connecction")
 app.use(express.json())
 const userRuotes =require("../../routes/user.route")
+const adminaRoutes =require("../../routes/admin.route")
 app.use("/api/user",userRuotes)
+app.use("/api/admin",adminaRoutes)
 app.get("*",(req,res)=>res.send({error:"invalid url"}))
 module.exports=app

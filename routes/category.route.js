@@ -1,0 +1,7 @@
+const router = require('express').Router()
+const adminAuth = require('../middleware/admin.auth')
+const categoryController = require("../app/controller/category.controler")
+router.post("/addCategory", adminAuth, categoryController.addCategory)
+router.get("/allCategory", adminAuth, categoryController.allCategory)
+router.get("/myCategory", adminAuth, categoryController.myCategory)
+router.delete("/delCategory/:id", adminAuth, categoryController.delCategory)
