@@ -1,0 +1,11 @@
+const router = require('express').Router()
+const auth = require('../middleware/auth')
+const upload = require("../middleware/upload")
+const productController = require("../app/controller/product.controller")
+router.post("/add", auth, productController.addproduct)
+router.get("/allproducts", auth, productController.allproducts)
+router.get("/myproducts", auth, productController.myproducts)
+router.delete("/delproduct/:id", auth, productController.delproduct)
+router.post('/profile',auth, upload.single('img'), productController.imageProduct)
+router.post('/profile1',upload.single('img'), (req,res)=> res.send(req.file))
+module.exports= router
